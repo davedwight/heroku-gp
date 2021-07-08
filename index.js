@@ -8,9 +8,10 @@ server.use(express.json());
 server.use(cors());
 server.use(express.static(path.join(__dirname, 'client/')));
 
-console.log(process.env.USERDOMAIN);
+console.log(process.env);
 console.log(process.env.PORT);
 const PORT = process.env.PORT || 5000;
+const success = process.env.success;
 
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/public', 'index.html'))
@@ -19,7 +20,7 @@ server.get('/', (req, res) => {
 server.get('/api', (req, res) => {
     console.log(req);
     res.json({
-        message: "web43 is working and ready to serve",
+        message: success,
     })
 });
 
